@@ -1,0 +1,38 @@
+<p>
+  <b>Project summary</b>
+  <br />
+  Project Name: {{ currentProject.name }}
+  <br />
+  Project description: {{ currentProject.description }}
+  <br />
+  Total added hours: {{ totalAddedHours }}
+</p>
+
+<p>
+  
+  <b>Add hours</b>
+  <br/>
+  <label> Hours </label>
+  <input type="number" [(ngModel)]="projectTime.time" />
+  <label> Description </label>
+  <input type="text" [(ngModel)]="projectTime.description" />
+  <button (click)="addHours()"> Add </button>
+</p>
+
+<div *ngIf="currentProject.hours.length > 0">
+  <table>
+    <thead>
+      <tr>
+        <th>Hours</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let time of currentProject.hours">
+        <td> {{time.time}} </td>
+        <td> {{time.description}} </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

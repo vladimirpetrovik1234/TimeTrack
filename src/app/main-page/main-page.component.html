@@ -1,0 +1,41 @@
+
+  <div>
+    <h3>Add Project</h3>
+  </div>
+  <label> Name </label>
+  <input type="text" [(ngModel)]="newProject.name" />
+
+  <label> Description </label>
+  <input type="text" [(ngModel)]="newProject.description" />
+
+
+  <button *ngIf="editMode == false" (click)="addProject()">
+    Add
+  </button>
+
+  <button *ngIf="editMode == true" (click)="updateProject()">
+    Update
+  </button>
+
+  <div *ngIf="projectService.projects.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projectService.projects">
+          <td> {{project.name}} </td>
+          <td> {{project.description}} </td>
+          <td>
+            <a (click)="viewProject(project)">View</a>
+            <a (click)="startUpdateProject(project)">Update</a>
+            <a (click)="deleteProject(project)">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
